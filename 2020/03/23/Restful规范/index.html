@@ -94,7 +94,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/Restful%E8%A7%84%E8%8C%83/" data-id="ck84e7yxi0000fwntg2tx5cuw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/23/Restful%E8%A7%84%E8%8C%83/" data-id="ck84f32cd0000ywntdazz7j3d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,10 +175,13 @@
     <a href="/archives" class="mobile-nav-link">Archives</a>
   
 </nav>
+<canvas
+width="300"
+height="600"
+id="model"></canvas>
     
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
 
   
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
@@ -192,7 +195,16 @@
 <script src="/js/script.js"></script>
 
 
+<script src="/js/live2d.js"></script>
 
+
+
+<script>
+  
+let dir = `/live2d-widget-model-tororo/assets/tororo.model.json`
+const url = 'https://cdn.jsdelivr.net/gh/QiShaoXuan/live2DModel@1.0.0' + dir
+loadlive2d("model", url);
+</script>
 
   </div>
 </body>

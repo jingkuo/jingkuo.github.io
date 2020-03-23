@@ -122,6 +122,15 @@ body,
 #container {
   height: 100%;
 }
+html #model,
+body #model,
+#container #model {
+  position: fixed;
+  right: 0px;
+  bottom: 0;
+  z-index: 99999;
+  pointer-events: none;
+}
 body {
   background: #eee;
   font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
