@@ -106,7 +106,13 @@ db.col.find().count() 返回文档数量
 <span class="variable">$eq</span>:等于
 例：db.col.find({age:{<span class="variable">$lt</span>:20}})
 and 且  db.col.find({name:<span class="string">""</span>,age:20})
-or 或  db.col.find({<span class="variable">$or</span>:[{key:value},{key2:value2}]})</code></pre>
+or 或  db.col.find({<span class="variable">$or</span>:[{key:value},{key2:value2}]})
+db.col.find({title:/教/}) 包含教字的
+db.col.find({title:/^教/}) 教开头的
+db.col.find({title:/教$/}) 教结尾的
+<span class="variable">$limit</span> 限制条数
+<span class="variable">$sort</span> 排序 db.col.sort({age:1})  1表示升序，-1表示降序
+<span class="variable">$skip</span> 跳过几条</code></pre>
 <h3 id="更新文档（改）"><a href="#更新文档（改）" class="headerlink" title="更新文档（改）"></a>更新文档（改）</h3><pre><code class="bash">db.update(query,update,{upsert:boolean,multi:boolean})
 upsert:可选，如果不存在update的记录，是否插入objNew，<span class="literal">true</span>为插入，默认<span class="literal">false</span>
 multi：可选，默认<span class="literal">false</span>，只更新第一条记录，如果为<span class="literal">true</span>，就会全部更新
@@ -117,14 +123,43 @@ db.col.update({},{<span class="variable">$unset</span>:{}})
 可以简写为 db.col.update({},{},upsert,multi)
           db.col.update({},{},<span class="literal">true</span>,<span class="literal">true</span>)
 db.col.updateOne() 修改一个
-db.col.updateMany() 修改多个</code></pre>
+db.col.updateMany() 修改多个
+db.col.replace({},{}) 替换
+<span class="variable">$push</span> 往数组里添加
+db.col.update({username:<span class="string">""</span>},{<span class="variable">$push</span>:{hobby:<span class="string">"movie"</span>}})
+<span class="variable">$addToset</span> 往数组里添加，不存在就添加，存在就不添加，相当于去重
+db.col.update({username:<span class="string">""</span>},{<span class="variable">$addToset</span>:{hobby:<span class="string">"movie"</span>}})
+<span class="variable">$each</span> 遍历数组
+    db.col.update({username:<span class="string">""</span>},{<span class="variable">$addToset</span>:{hobby:[<span class="string">"movie"</span>,<span class="string">"eat"</span>]}})</code></pre>
 <h3 id="删除文档（删）"><a href="#删除文档（删）" class="headerlink" title="删除文档（删）"></a>删除文档（删）</h3><pre><code class="bash">db.col.deleteMmany({}) 删除集合下的全部内容
-</code></pre>
+db.col.deleteMany({status:<span class="string">"A"</span>}) 删除status等于A的全部文档
+db.col.deleteOne({})删除第一个文档</code></pre>
+<h3 id="aggregate-聚合"><a href="#aggregate-聚合" class="headerlink" title="aggregate 聚合"></a>aggregate 聚合</h3><pre><code class="bash">聚合表达式
+<span class="variable">$sum</span> 计算总和
+<span class="variable">$avg</span> 计算平均值
+<span class="variable">$min</span> 计算最小值
+<span class="variable">$max</span> 计算最大值
+<span class="variable">$push</span> 在结果文档中插入值到一个数组中
+<span class="variable">$addToset</span> 在结果文档中插入值到一个数组中，但不重复
+<span class="variable">$first</span> 第一个
+<span class="variable">$last</span> 最后一个
+管道
+<span class="variable">$project</span> 修改输入文档的结构，可以用来重命名，增加或删除域
+<span class="variable">$match</span>  用于过滤数据，相当于find
+<span class="variable">$limit</span> 限制条数
+<span class="variable">$skip</span> 跳过条数
+<span class="variable">$unwind</span>  根据集合中的数组数据进行拆分
+  db.col.aggregate([{<span class="variable">$unwind</span>:<span class="string">"<span class="variable">$name</span>"</span>}])
+<span class="variable">$group</span>  对数据进行整合，标准是_id ,可以一个或多个拆分条件,没有条件时写_id:null
+  db.col.aggregate([{<span class="variable">$group</span>:{_id:<span class="string">"<span class="variable">$name</span>"</span>,}}])
+  db.col.aggregate([{<span class="variable">$group</span>:{_id:{name:<span class="string">"<span class="variable">$name</span>"</span>,age:<span class="string">"<span class="variable">$age</span>"</span>},age:<span class="string">"<span class="variable">$age</span>"</span>}}])
+<span class="variable">$sort</span> 排序
+  db.col.aggregate([{<span class="variable">$sort</span>:{name:1}}])</code></pre>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/24/mongodb/" data-id="ck859nka0000174ntcphr68d9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/24/mongodb/" data-id="ck85qkafn0001okntgg4x06tc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -163,7 +198,7 @@ db.col.updateMany() 修改多个</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/Restful%E8%A7%84%E8%8C%83/" data-id="ck859nk8x000074ntdwbqerrf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/23/Restful%E8%A7%84%E8%8C%83/" data-id="ck85qkafr0002oknt4yc760tq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -212,7 +247,7 @@ db.col.updateMany() 修改多个</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/hello-world/" data-id="ck859nkal000274ntftt0dxnz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/23/hello-world/" data-id="ck85qkaf70000okntek9gdeuy" class="article-share-link">Share</a>
       
       
     </footer>
