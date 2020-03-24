@@ -63,6 +63,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-typeorm" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/24/typeorm/" class="article-date">
+  <time datetime="2020-03-24T10:10:18.601Z" itemprop="datePublished">2020-03-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/24/typeorm/">typeorm mongodb</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="typeorm封装了mongodb的操作"><a href="#typeorm封装了mongodb的操作" class="headerlink" title="typeorm封装了mongodb的操作"></a>typeorm封装了mongodb的操作</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">  @Entity() 实体相当于集合</span><br><span class="line">  import &#123; Entity, ObjectID, ObjectIdColumn, Column &#125; from <span class="string">"typeorm"</span>;</span><br><span class="line">@Entity()</span><br><span class="line"><span class="built_in">export</span> class User &#123;</span><br><span class="line">  @ObjectIdColumn()</span><br><span class="line">  id: ObjectID;</span><br><span class="line">  @Column()</span><br><span class="line">  firstName: string;</span><br><span class="line">  @Column()</span><br><span class="line">  lastName: string;</span><br><span class="line">  @createDateColumn() 创建时间</span><br><span class="line">  createTime:Date</span><br><span class="line">  @updateDateColumn() 更新时间</span><br><span class="line">   updateTime:Date</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="连接mongodb数据库"><a href="#连接mongodb数据库" class="headerlink" title="连接mongodb数据库"></a>连接mongodb数据库</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createConnection, Connection &#125; from <span class="string">"typeorm"</span>;</span><br><span class="line">const connection: Connection = await createConnection(&#123;</span><br><span class="line">  <span class="built_in">type</span>: <span class="string">"mongodb"</span>,</span><br><span class="line">  host: <span class="string">"localhost"</span>,</span><br><span class="line">  port: 27017,</span><br><span class="line">  database: <span class="string">"test"</span>,</span><br><span class="line">  name:<span class="string">"databaseName"</span>,</span><br><span class="line">  entities: [...实体对象],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="通过Repositories操作实体"><a href="#通过Repositories操作实体" class="headerlink" title="通过Repositories操作实体"></a>通过Repositories操作实体</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repository= getConnection(databaseName).getMongoRepository(实体对象)</span><br></pre></td></tr></table></figure>
+
+<h1 id="增"><a href="#增" class="headerlink" title="增"></a>增</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">repository.insertOne() 增加一个</span><br><span class="line">repository.insertMany() 增加多个</span><br><span class="line">repository.save()</span><br></pre></td></tr></table></figure>
+<h1 id="删"><a href="#删" class="headerlink" title="删"></a>删</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">repository.deleteOne() 删除一个</span><br><span class="line">repository.deleteMany() 删除多个  </span><br><span class="line">repository.findOneAndDelete() 找到删除一个</span><br></pre></td></tr></table></figure>
+<h1 id="改"><a href="#改" class="headerlink" title="改"></a>改</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">repository.updateOne() 更新一个</span><br><span class="line">repository.updateMany() 更新多个</span><br><span class="line">repository.findOneAndUpdate() 找到更新一个</span><br><span class="line">repository.findOneAndReplace() 找到一个替换</span><br><span class="line">repository.replaceOne() 替换</span><br></pre></td></tr></table></figure>
+<h1 id="查"><a href="#查" class="headerlink" title="查"></a>查</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">repository.find(&#123;<span class="built_in">where</span>:&#123;_id :&#123;<span class="variable">$eq</span>:new mongodb.ObjectId()&#125;&#125;&#125;)</span><br><span class="line">repository.find(&#123;<span class="built_in">where</span>:&#123;_id :&#123;<span class="variable">$in</span>:[<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>]&#125;&#125;&#125;)</span><br><span class="line">repository.findOne()   找到一个</span><br><span class="line"> repository.findById() 根据id查找</span><br></pre></td></tr></table></figure>
+
+<h1 id="bulkWrite"><a href="#bulkWrite" class="headerlink" title="bulkWrite"></a>bulkWrite</h1><h1 id="aggregate"><a href="#aggregate" class="headerlink" title="aggregate"></a>aggregate</h1><h1 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/24/typeorm/" data-id="ck85schiu00027cntfq8d0csr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-mongodb" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/03/24/mongodb/" class="article-date">
@@ -159,7 +204,7 @@ db.col.deleteOne({})删除第一个文档</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/24/mongodb/" data-id="ck85qkafn0001okntgg4x06tc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/24/mongodb/" data-id="ck85schj500037cntah980k34" class="article-share-link">Share</a>
       
       
     </footer>
@@ -198,7 +243,7 @@ db.col.deleteOne({})删除第一个文档</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/Restful%E8%A7%84%E8%8C%83/" data-id="ck85qkafr0002oknt4yc760tq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/23/Restful%E8%A7%84%E8%8C%83/" data-id="ck85schhr00007cnta5j5dlfv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -247,7 +292,7 @@ db.col.deleteOne({})删除第一个文档</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/hello-world/" data-id="ck85qkaf70000okntek9gdeuy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/23/hello-world/" data-id="ck85schiq00017cnthzdp5t2a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -286,6 +331,10 @@ db.col.deleteOne({})删除第一个文档</code></pre>
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/03/24/typeorm/">typeorm mongodb</a>
+          </li>
         
           <li>
             <a href="/2020/03/24/mongodb/">mongoDB数据库</a>
