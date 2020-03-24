@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="JinKuo的博客中心">
 <meta property="og:description" content="mongoDB安装配置1.安装MongoDB，在环境变量path里配置bin路径2.创建mongo.config文件，在里面配置数据库的存储路径和log的路径12dbpath&#x3D;D:\MonggoDB\data\db 数据库存储路径dbpath&#x3D;D:\MonggoDB\data\log\mongod.log 3.执行mongod–config:”D:\MonggoDB\data\bin\mongo.">
 <meta property="article:published_time" content="2020-03-24T01:20:45.295Z">
-<meta property="article:modified_time" content="2020-03-24T01:33:04.141Z">
+<meta property="article:modified_time" content="2020-03-24T02:14:32.604Z">
 <meta property="article:author" content="JinKuo">
 <meta name="twitter:card" content="summary">
   
@@ -89,11 +89,44 @@
       
         <h1 id="mongoDB安装配置"><a href="#mongoDB安装配置" class="headerlink" title="mongoDB安装配置"></a>mongoDB安装配置</h1><h3 id="1-安装MongoDB，在环境变量path里配置bin路径"><a href="#1-安装MongoDB，在环境变量path里配置bin路径" class="headerlink" title="1.安装MongoDB，在环境变量path里配置bin路径"></a>1.安装MongoDB，在环境变量path里配置bin路径</h3><h3 id="2-创建mongo-config文件，在里面配置数据库的存储路径和log的路径"><a href="#2-创建mongo-config文件，在里面配置数据库的存储路径和log的路径" class="headerlink" title="2.创建mongo.config文件，在里面配置数据库的存储路径和log的路径"></a>2.创建mongo.config文件，在里面配置数据库的存储路径和log的路径</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dbpath=D:\MonggoDB\data\db 数据库存储路径</span><br><span class="line">dbpath=D:\MonggoDB\data\<span class="built_in">log</span>\mongod.log</span><br></pre></td></tr></table></figure>
 <h3 id="3-执行mongod–config-”D-MonggoDB-data-bin-mongo-config–install配置”"><a href="#3-执行mongod–config-”D-MonggoDB-data-bin-mongo-config–install配置”" class="headerlink" title="3.执行mongod–config:”D:\MonggoDB\data\bin\mongo.config–install配置”"></a>3.执行mongod–config:”D:\MonggoDB\data\bin\mongo.config–install配置”</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongod启动</span><br><span class="line">mongo进行数据库操作</span><br></pre></td></tr></table></figure>
-<h1 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show dbs   show databases 显示几个数据库</span><br></pre></td></tr></table></figure>
+<h1 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">show dbs   show databases 显示几个数据库</span><br><span class="line">use dbname  进入某一数据库</span><br><span class="line">show collections 显示数据库中有多少集合</span><br><span class="line">db.dropDatabase() 删除数据库</span><br><span class="line">db.&lt;collection&gt;.drop() 删除集合</span><br></pre></td></tr></table></figure>
+<h3 id="插入文档（增）"><a href="#插入文档（增）" class="headerlink" title="插入文档（增）"></a>插入文档（增）</h3><pre><code class="bash">db.&lt;collection&gt;.insert({}) 多个使用数据[{},{}]
+db.&lt;collection&gt;.insertone({}) 添加一个
+db.&lt;collection&gt;.insertMany([{},{}])添加多个
+db.&lt;collection&gt;.save({}) 如果提供_id的话会去更新该条数据，否则相当于insert</code></pre>
+<h3 id="查询文档（查）"><a href="#查询文档（查）" class="headerlink" title="查询文档（查）"></a>查询文档（查）</h3><pre><code class="bash">db.&lt;collection&gt;.find(query,projection)
+query:可选，使用查询操作符指定查询条件，没有查询全部
+projection“可选，使用投影操作符指定返回的键，查询时返回文档中所有的键值，只需省略参数即可
+db.col.find().pretty() pretty()方法以格式化的方法来显示所有的文档
+db.col.findOne() 返回第一个文档对象
+db.col.find().count() 返回文档数量
+<span class="variable">$lt</span>:小于
+<span class="variable">$lte</span>:小于等于
+<span class="variable">$gt</span>:大于
+<span class="variable">$gte</span>:大于等于
+<span class="variable">$ne</span>:不等于
+<span class="variable">$eq</span>:等于
+例：db.col.find({age:{<span class="variable">$lt</span>:20}})
+and 且  db.col.find({name:<span class="string">""</span>,age:20})
+or 或  db.col.find({<span class="variable">$or</span>:[{key:value},{key2:value2}]})</code></pre>
+<h3 id="更新文档（改）"><a href="#更新文档（改）" class="headerlink" title="更新文档（改）"></a>更新文档（改）</h3><pre><code class="bash">db.update(query,update,{upsert:boolean,multi:boolean})
+upsert:可选，如果不存在update的记录，是否插入objNew，<span class="literal">true</span>为插入，默认<span class="literal">false</span>
+multi：可选，默认<span class="literal">false</span>，只更新第一条记录，如果为<span class="literal">true</span>，就会全部更新
+<span class="variable">$set</span> 修改
+db.col.update({},{<span class="variable">$set</span>:{}})
+<span class="variable">$unset</span> 删除属性
+db.col.update({},{<span class="variable">$unset</span>:{}})
+可以简写为 db.col.update({},{},upsert,multi)
+          db.col.update({},{},<span class="literal">true</span>,<span class="literal">true</span>)
+db.col.updateOne() 修改一个
+db.col.updateMany() 修改多个</code></pre>
+<h3 id="删除文档（删）"><a href="#删除文档（删）" class="headerlink" title="删除文档（删）"></a>删除文档（删）</h3><pre><code class="bash">db.col.deleteMmany({}) 删除集合下的全部内容
+</code></pre>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/24/mongodb/" data-id="ck85865xa0000oont8lp87ygo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/24/mongodb/" data-id="ck859nka0000174ntcphr68d9" class="article-share-link">Share</a>
       
       
     </footer>
