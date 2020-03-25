@@ -94,11 +94,13 @@
 <h1 id="改"><a href="#改" class="headerlink" title="改"></a>改</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">repository.updateOne() 更新一个</span><br><span class="line">repository.updateMany() 更新多个</span><br><span class="line">repository.findOneAndUpdate() 找到更新一个</span><br><span class="line">repository.findOneAndReplace() 找到一个替换</span><br><span class="line">repository.replaceOne() 替换</span><br></pre></td></tr></table></figure>
 <h1 id="查"><a href="#查" class="headerlink" title="查"></a>查</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">repository.find(&#123;<span class="built_in">where</span>:&#123;_id :&#123;<span class="variable">$eq</span>:new mongodb.ObjectId()&#125;&#125;&#125;)</span><br><span class="line">repository.find(&#123;<span class="built_in">where</span>:&#123;_id :&#123;<span class="variable">$in</span>:[<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>]&#125;&#125;&#125;)</span><br><span class="line">repository.findOne()   找到一个</span><br><span class="line"> repository.findById() 根据id查找</span><br></pre></td></tr></table></figure>
 
-<h1 id="bulkWrite"><a href="#bulkWrite" class="headerlink" title="bulkWrite"></a>bulkWrite</h1><h1 id="aggregate"><a href="#aggregate" class="headerlink" title="aggregate"></a>aggregate</h1><h1 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h1>
+<h1 id="bulkWrite"><a href="#bulkWrite" class="headerlink" title="bulkWrite"></a>bulkWrite</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">authorRepository.bulkWrite([&#123;updateMany:&#123;filter:&#123;&#125;,update:&#123;<span class="variable">$unset</span>:&#123;gender:<span class="literal">true</span>&#125;&#125;,upsert:1&#125;&#125;])</span><br></pre></td></tr></table></figure>
+<h1 id="aggregate"><a href="#aggregate" class="headerlink" title="aggregate"></a>aggregate</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">authorRepository.aggregate(<span class="variable">$group</span>:&#123;_id:<span class="string">"<span class="variable">$name</span>"</span>&#125;)  和mongodb一样</span><br></pre></td></tr></table></figure>
+<h1 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">authorRepository.distinct(<span class="string">"age"</span>,&#123;name:<span class="string">"A"</span>&#125;) 参一：要返回的数据 参二：query筛选条件</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/24/typeorm/" data-id="ck85schiu00027cntfq8d0csr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/24/typeorm/" data-id="ck86mpbff0002c0nt2rl8afn0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -204,7 +206,7 @@ db.col.deleteOne({})删除第一个文档</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/24/mongodb/" data-id="ck85schj500037cntah980k34" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/24/mongodb/" data-id="ck86mpbfh0003c0nt6x1hb64w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -243,7 +245,7 @@ db.col.deleteOne({})删除第一个文档</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/Restful%E8%A7%84%E8%8C%83/" data-id="ck85schhr00007cnta5j5dlfv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/23/Restful%E8%A7%84%E8%8C%83/" data-id="ck86mpbd30000c0nt16o9d406" class="article-share-link">Share</a>
       
       
     </footer>
@@ -292,7 +294,7 @@ db.col.deleteOne({})删除第一个文档</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/hello-world/" data-id="ck85schiq00017cnthzdp5t2a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/23/hello-world/" data-id="ck86mpbel0001c0nt5bnh2yrz" class="article-share-link">Share</a>
       
       
     </footer>
