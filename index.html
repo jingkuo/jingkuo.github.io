@@ -85,12 +85,74 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="react富文本"><a href="#react富文本" class="headerlink" title="react富文本"></a>react富文本</h3><pre><code class="bash">dangerouslySetInnerHTML={{ __html:}}</code></pre>
+        <h1 id="reactJSX"><a href="#reactJSX" class="headerlink" title="reactJSX"></a>reactJSX</h1><pre><code class="bash">HTML 里的 class 在 JSX 里要写成 className，因为 class 在 JS 里是保留关键字。同理某些属性比如 <span class="keyword">for</span> 要写成 htmlFor。</code></pre>
+<h1 id="react生命周期"><a href="#react生命周期" class="headerlink" title="react生命周期"></a>react生命周期</h1><h3 id="装载组件触发"><a href="#装载组件触发" class="headerlink" title="装载组件触发"></a>装载组件触发</h3><pre><code class="bash">   componentWillMount
+
+只会在装载之前调用一次，在 render 之前调用，你可以在这个方法里面调用 setState 改变状态，并且不会导致额外调用一次 render
+componentDidMount
+
+只会在装载完成之后调用一次，在 render 之后调用，从这里开始可以通过 ReactDOM.findDOMNode(this) 获取到组件的 DOM 节点。</code></pre>
+<h3 id="更新组件触发"><a href="#更新组件触发" class="headerlink" title="更新组件触发"></a>更新组件触发</h3><pre><code class="bash">componentWillReceiveProps
+shouldComponentUpdate
+componentWillUpdate
+componentDidUpdate</code></pre>
+<h3 id="卸载组件触发"><a href="#卸载组件触发" class="headerlink" title="卸载组件触发"></a>卸载组件触发</h3><pre><code class="bash">componentWillUnmount</code></pre>
+<h1 id="DOM操作"><a href="#DOM操作" class="headerlink" title="DOM操作"></a>DOM操作</h1><h3 id="findDOMNode"><a href="#findDOMNode" class="headerlink" title="findDOMNode()"></a>findDOMNode()</h3><pre><code class="bash">当组件加载到页面上之后（mounted），你都可以通过 react-dom 提供的 findDOMNode() 方法拿到组件对应的 DOM 元素。
+import { findDOMNode } from <span class="string">'react-dom'</span>;
+
+// Inside Component class
+<span class="function"><span class="title">componentDidMound</span></span>() {
+  const el = findDOMNode(this);
+}
+findDOMNode() 不能用在无状态组件上。</code></pre>
+<h3 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h3><pre><code class="bash">通过在要引用的 DOM 元素上面设置一个 ref 属性指定一个名称，然后通过 this.refs.name 来访问对应的 DOM 元素。</code></pre>
+<h3 id="循环插入子元素"><a href="#循环插入子元素" class="headerlink" title="循环插入子元素"></a>循环插入子元素</h3><pre><code class="bash">{数组.map(item=&gt;{
+  <span class="built_in">return</span> &lt;标签 key={item.id}&gt;{item}&lt;/标签&gt;
+})}</code></pre>
+<h3 id="this-props-children"><a href="#this-props-children" class="headerlink" title="this.props.children"></a>this.props.children</h3><pre><code class="bash">组件 &lt;标签 &gt;{this.props.children}&lt;/标签&gt;
+别的组件在使用该组件时在标签中间写的dom会显示在该组件的this.props.children中，相当于vue的&lt;slot/&gt;插槽</code></pre>
+<h1 id="react-contextApi"><a href="#react-contextApi" class="headerlink" title="react contextApi"></a>react contextApi</h1><pre><code class="bash"><span class="built_in">export</span> class State{
+  key:value,
+  仓库,相当于vuex的store里的state ，可以设置默认值
+}
+
+<span class="built_in">export</span> <span class="built_in">type</span> NameComponent = React.Component&lt;any, { data: State }&gt;;
+初始时传入的组件实例
+
+<span class="built_in">export</span> class NameReducer{
+  public static instance: NameReducer; 调用自身实例化方法后用来存储自身实例对象，在其他组件中可以通过该属性来调用context中的方法
+   把传入的组件和state初始化赋给instance
+  public static initInstance(component: NameComponent,state: State){
+    NameReducer.instance = new NameReducer(component,state)
+  }
+  public state:State; 用来存state
+  private component:NameComponent; 用来存传入的component
+
+  该类的构造函数，初始化时给component和state赋值
+  constrctor(component:NameComponent,state:State){
+    this.component = component;
+    this.state = state;
+  }
+  public 方法 (){
+
+  }
+
+  public setState(state: Partial&lt;State&gt;){
+    修改值得方法，调用时修改该实例对象的值和传入的组件的state.data的值
+    this.state = Object.assign(new State(),this.state,state);
+    this.component.setState({
+      data:this.state,
+    })
+  }
+
+}
+<span class="built_in">export</span> const NameContext = React.createContext&lt;State&gt;(new State());</code></pre>
+<h3 id="react富文本"><a href="#react富文本" class="headerlink" title="react富文本"></a>react富文本</h3><pre><code class="bash">dangerouslySetInnerHTML={{ __html:}}</code></pre>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/14/react/" data-id="ck8zeft4j00023wntfd7mejid" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/14/react/" data-id="ck925wusq00022cntduqy49ex" class="article-share-link">Share</a>
       
       
     </footer>
@@ -137,7 +199,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/24/typeorm/" data-id="ck8zeft4m00033wntca4yfg4a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/24/typeorm/" data-id="ck925wut400032cntal2u5jl9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -243,7 +305,7 @@ db.col.deleteOne({})删除第一个文档</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/24/mongodb/" data-id="ck8zeft4c00013wnt1knq65v7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/24/mongodb/" data-id="ck925wuso00012cnt0pzq43xi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -282,7 +344,7 @@ db.col.deleteOne({})删除第一个文档</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/Restful%E8%A7%84%E8%8C%83/" data-id="ck8zeft3800003wnt0qus4q5r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/23/Restful%E8%A7%84%E8%8C%83/" data-id="ck925wus400002cntd03f7o8q" class="article-share-link">Share</a>
       
       
     </footer>
