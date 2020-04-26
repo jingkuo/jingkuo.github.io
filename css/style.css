@@ -126,6 +126,8 @@ html #model,
 body #model,
 #container #model {
   position: fixed;
+  width: 10%;
+  height: 20%;
   right: 0px;
   bottom: 0;
   z-index: 99999;
