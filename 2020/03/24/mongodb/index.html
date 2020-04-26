@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>mongoDB数据库 | JinKuo的博客中心</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="mongoDB安装配置1.安装MongoDB，在环境变量path里配置bin路径2.创建mongo.config文件，在里面配置数据库的存储路径和log的路径12dbpath&#x3D;D:\MonggoDB\data\db 数据库存储路径dbpath&#x3D;D:\MonggoDB\data\log\mongod.log 3.执行mongod–config:”D:\MonggoDB\data\bin\mongo.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongoDB数据库">
+<meta property="og:url" content="http://yoursite.com/2020/03/24/mongodb/index.html">
+<meta property="og:site_name" content="JinKuo的博客中心">
+<meta property="og:description" content="mongoDB安装配置1.安装MongoDB，在环境变量path里配置bin路径2.创建mongo.config文件，在里面配置数据库的存储路径和log的路径12dbpath&#x3D;D:\MonggoDB\data\db 数据库存储路径dbpath&#x3D;D:\MonggoDB\data\log\mongod.log 3.执行mongod–config:”D:\MonggoDB\data\bin\mongo.">
+<meta property="article:published_time" content="2020-03-24T01:20:45.295Z">
+<meta property="article:modified_time" content="2020-03-24T10:05:02.442Z">
+<meta property="article:author" content="JinKuo">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="JinKuo的博客中心" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JinKuo的博客中心</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">博客</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mongodb" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/24/mongodb/" class="article-date">
+  <time datetime="2020-03-24T01:20:45.295Z" itemprop="datePublished">2020-03-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mongoDB数据库
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="mongoDB安装配置"><a href="#mongoDB安装配置" class="headerlink" title="mongoDB安装配置"></a>mongoDB安装配置</h1><h3 id="1-安装MongoDB，在环境变量path里配置bin路径"><a href="#1-安装MongoDB，在环境变量path里配置bin路径" class="headerlink" title="1.安装MongoDB，在环境变量path里配置bin路径"></a>1.安装MongoDB，在环境变量path里配置bin路径</h3><h3 id="2-创建mongo-config文件，在里面配置数据库的存储路径和log的路径"><a href="#2-创建mongo-config文件，在里面配置数据库的存储路径和log的路径" class="headerlink" title="2.创建mongo.config文件，在里面配置数据库的存储路径和log的路径"></a>2.创建mongo.config文件，在里面配置数据库的存储路径和log的路径</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dbpath=D:\MonggoDB\data\db 数据库存储路径</span><br><span class="line">dbpath=D:\MonggoDB\data\<span class="built_in">log</span>\mongod.log</span><br></pre></td></tr></table></figure>
+<h3 id="3-执行mongod–config-”D-MonggoDB-data-bin-mongo-config–install配置”"><a href="#3-执行mongod–config-”D-MonggoDB-data-bin-mongo-config–install配置”" class="headerlink" title="3.执行mongod–config:”D:\MonggoDB\data\bin\mongo.config–install配置”"></a>3.执行mongod–config:”D:\MonggoDB\data\bin\mongo.config–install配置”</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongod启动</span><br><span class="line">mongo进行数据库操作</span><br></pre></td></tr></table></figure>
+<h1 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">show dbs   show databases 显示几个数据库</span><br><span class="line">use dbname  进入某一数据库</span><br><span class="line">show collections 显示数据库中有多少集合</span><br><span class="line">db.dropDatabase() 删除数据库</span><br><span class="line">db.&lt;collection&gt;.drop() 删除集合</span><br></pre></td></tr></table></figure>
+<h3 id="插入文档（增）"><a href="#插入文档（增）" class="headerlink" title="插入文档（增）"></a>插入文档（增）</h3><pre><code class="bash">db.&lt;collection&gt;.insert({}) 多个使用数据[{},{}]
+db.&lt;collection&gt;.insertone({}) 添加一个
+db.&lt;collection&gt;.insertMany([{},{}])添加多个
+db.&lt;collection&gt;.save({}) 如果提供_id的话会去更新该条数据，否则相当于insert</code></pre>
+<h3 id="查询文档（查）"><a href="#查询文档（查）" class="headerlink" title="查询文档（查）"></a>查询文档（查）</h3><pre><code class="bash">db.&lt;collection&gt;.find(query,projection)
+query:可选，使用查询操作符指定查询条件，没有查询全部
+projection“可选，使用投影操作符指定返回的键，查询时返回文档中所有的键值，只需省略参数即可
+db.col.find().pretty() pretty()方法以格式化的方法来显示所有的文档
+db.col.findOne() 返回第一个文档对象
+db.col.find().count() 返回文档数量
+<span class="variable">$lt</span>:小于
+<span class="variable">$lte</span>:小于等于
+<span class="variable">$gt</span>:大于
+<span class="variable">$gte</span>:大于等于
+<span class="variable">$ne</span>:不等于
+<span class="variable">$eq</span>:等于
+例：db.col.find({age:{<span class="variable">$lt</span>:20}})
+and 且  db.col.find({name:<span class="string">""</span>,age:20})
+or 或  db.col.find({<span class="variable">$or</span>:[{key:value},{key2:value2}]})
+db.col.find({title:/教/}) 包含教字的
+db.col.find({title:/^教/}) 教开头的
+db.col.find({title:/教$/}) 教结尾的
+<span class="variable">$limit</span> 限制条数
+<span class="variable">$sort</span> 排序 db.col.sort({age:1})  1表示升序，-1表示降序
+<span class="variable">$skip</span> 跳过几条</code></pre>
+<h3 id="更新文档（改）"><a href="#更新文档（改）" class="headerlink" title="更新文档（改）"></a>更新文档（改）</h3><pre><code class="bash">db.update(query,update,{upsert:boolean,multi:boolean})
+upsert:可选，如果不存在update的记录，是否插入objNew，<span class="literal">true</span>为插入，默认<span class="literal">false</span>
+multi：可选，默认<span class="literal">false</span>，只更新第一条记录，如果为<span class="literal">true</span>，就会全部更新
+<span class="variable">$set</span> 修改
+db.col.update({},{<span class="variable">$set</span>:{}})
+<span class="variable">$unset</span> 删除属性
+db.col.update({},{<span class="variable">$unset</span>:{}})
+可以简写为 db.col.update({},{},upsert,multi)
+          db.col.update({},{},<span class="literal">true</span>,<span class="literal">true</span>)
+db.col.updateOne() 修改一个
+db.col.updateMany() 修改多个
+db.col.replace({},{}) 替换
+<span class="variable">$push</span> 往数组里添加
+db.col.update({username:<span class="string">""</span>},{<span class="variable">$push</span>:{hobby:<span class="string">"movie"</span>}})
+<span class="variable">$addToset</span> 往数组里添加，不存在就添加，存在就不添加，相当于去重
+db.col.update({username:<span class="string">""</span>},{<span class="variable">$addToset</span>:{hobby:<span class="string">"movie"</span>}})
+<span class="variable">$each</span> 遍历数组
+    db.col.update({username:<span class="string">""</span>},{<span class="variable">$addToset</span>:{hobby:[<span class="string">"movie"</span>,<span class="string">"eat"</span>]}})</code></pre>
+<h3 id="删除文档（删）"><a href="#删除文档（删）" class="headerlink" title="删除文档（删）"></a>删除文档（删）</h3><pre><code class="bash">db.col.deleteMmany({}) 删除集合下的全部内容
+db.col.deleteMany({status:<span class="string">"A"</span>}) 删除status等于A的全部文档
+db.col.deleteOne({})删除第一个文档</code></pre>
+<h3 id="aggregate-聚合"><a href="#aggregate-聚合" class="headerlink" title="aggregate 聚合"></a>aggregate 聚合</h3><pre><code class="bash">聚合表达式
+<span class="variable">$sum</span> 计算总和
+<span class="variable">$avg</span> 计算平均值
+<span class="variable">$min</span> 计算最小值
+<span class="variable">$max</span> 计算最大值
+<span class="variable">$push</span> 在结果文档中插入值到一个数组中
+<span class="variable">$addToset</span> 在结果文档中插入值到一个数组中，但不重复
+<span class="variable">$first</span> 第一个
+<span class="variable">$last</span> 最后一个
+管道
+<span class="variable">$project</span> 修改输入文档的结构，可以用来重命名，增加或删除域
+<span class="variable">$match</span>  用于过滤数据，相当于find
+<span class="variable">$limit</span> 限制条数
+<span class="variable">$skip</span> 跳过条数
+<span class="variable">$unwind</span>  根据集合中的数组数据进行拆分
+  db.col.aggregate([{<span class="variable">$unwind</span>:<span class="string">"<span class="variable">$name</span>"</span>}])
+<span class="variable">$group</span>  对数据进行整合，标准是_id ,可以一个或多个拆分条件,没有条件时写_id:null
+  db.col.aggregate([{<span class="variable">$group</span>:{_id:<span class="string">"<span class="variable">$name</span>"</span>,}}])
+  db.col.aggregate([{<span class="variable">$group</span>:{_id:{name:<span class="string">"<span class="variable">$name</span>"</span>,age:<span class="string">"<span class="variable">$age</span>"</span>},age:<span class="string">"<span class="variable">$age</span>"</span>}}])
+<span class="variable">$sort</span> 排序
+  db.col.aggregate([{<span class="variable">$sort</span>:{name:1}}])</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/24/mongodb/" data-id="ck9gqxi9a0001bwnt6bzw7rcn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/03/24/typeorm/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          typeorm mongodb
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/23/Restful%E8%A7%84%E8%8C%83/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Restful规范</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/14/react/">react</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/24/typeorm/">typeorm mongodb</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/24/mongodb/">mongoDB数据库</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/23/Restful%E8%A7%84%E8%8C%83/">Restful规范</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 JinKuo<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">博客</a>
+  
+</nav>
+<canvas
+width="150"
+height="300"
+id="model"></canvas>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/live2d.js"></script>
+
+
+
+<script>
+  
+let dir = `/live2d-widget-model-tororo/assets/tororo.model.json`
+const url = 'https://cdn.jsdelivr.net/gh/QiShaoXuan/live2DModel@1.0.0' + dir
+loadlive2d("model", url);
+</script>
+
+  </div>
+</body>
+</html>
