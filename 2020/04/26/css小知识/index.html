@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>css小知识 | JinKuo的博客中心</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="快速重置表单元素 unsetbutton { all: unset; } 文本省略号显示    div {     white-space:nowrap;&#x2F;* 规定文本是否折行 *&#x2F;     overflow: hidden;&#x2F;* 规定超出内容宽度的元素隐藏 *&#x2F;   text-overflow: ellipsis;   &#x2F;* 规定超出的内容文本省略号显示，通常跟上面的属性连用，因为没有上面的属性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css小知识">
+<meta property="og:url" content="http://yoursite.com/2020/04/26/css%E5%B0%8F%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="JinKuo的博客中心">
+<meta property="og:description" content="快速重置表单元素 unsetbutton { all: unset; } 文本省略号显示    div {     white-space:nowrap;&#x2F;* 规定文本是否折行 *&#x2F;     overflow: hidden;&#x2F;* 规定超出内容宽度的元素隐藏 *&#x2F;   text-overflow: ellipsis;   &#x2F;* 规定超出的内容文本省略号显示，通常跟上面的属性连用，因为没有上面的属性">
+<meta property="article:published_time" content="2020-04-26T09:14:54.828Z">
+<meta property="article:modified_time" content="2020-04-26T10:00:12.423Z">
+<meta property="article:author" content="JinKuo">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="JinKuo的博客中心" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JinKuo的博客中心</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">博客</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-css小知识" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/26/css%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="article-date">
+  <time datetime="2020-04-26T09:14:54.828Z" itemprop="datePublished">2020-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      css小知识
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="快速重置表单元素-unset"><a href="#快速重置表单元素-unset" class="headerlink" title="快速重置表单元素 unset"></a>快速重置表单元素 unset</h3><pre><code class="bash">button { all: <span class="built_in">unset</span>; }</code></pre>
+<h3 id="文本省略号显示"><a href="#文本省略号显示" class="headerlink" title="文本省略号显示"></a>文本省略号显示</h3><pre><code class="bash">    div {  
+  white-space:nowrap;/* 规定文本是否折行 */  
+  overflow: hidden;/* 规定超出内容宽度的元素隐藏 */
+  text-overflow: ellipsis;
+  /* 规定超出的内容文本省略号显示，通常跟上面的属性连用，因为没有上面的属性不会触发超出规定的内容 */
+}复制代码折行(能主动控制行数,这里设置的超出 4 行显示省略号)：div {      
+  overflow: hidden;      
+  text-overflow: ellipsis;      
+  display: -webkit-box; /* 将对象作为弹性伸缩盒子模型显示 */      
+  -webkit-line-clamp: 4; /* 控制最多显示几行 */      
+  -webkit-box-orient: vertical; /* 设置或检索伸缩盒对象的子元素的排列方式 */    
+}</code></pre>
+<h3 id="最后一个-div-不显示下边框"><a href="#最后一个-div-不显示下边框" class="headerlink" title="最后一个 div 不显示下边框"></a>最后一个 div 不显示下边框</h3><pre><code class="bash">div:not(:last-child) /* 匹配非最后一个 div 元素的 div 元素 */</code></pre>
+<h3 id="设置文本俩端对齐"><a href="#设置文本俩端对齐" class="headerlink" title="设置文本俩端对齐"></a>设置文本俩端对齐</h3><pre><code class="bash">text-align-last:justify;</code></pre>
+<h3 id="通过pointer-events-none-阻止默认事件"><a href="#通过pointer-events-none-阻止默认事件" class="headerlink" title="通过pointer-events: none;阻止默认事件"></a>通过pointer-events: none;阻止默认事件</h3><pre><code class="bash">pointer-events: none;</code></pre>
+<h3 id="在标签上自定义属性data-，通过attr-获取其内容赋值到content上"><a href="#在标签上自定义属性data-，通过attr-获取其内容赋值到content上" class="headerlink" title="在标签上自定义属性data-*，通过attr()获取其内容赋值到content上"></a>在标签上自定义属性data-*，通过attr()获取其内容赋值到content上</h3><pre><code class="bash"> &lt;a class=<span class="string">"tips"</span> href=<span class="string">"https://www.baidu.com"</span> data-msg=<span class="string">"Hello World"</span>&gt;提示框&lt;/a&gt;
+content: attr(data-msg);</code></pre>
+<h3 id="使用伪类-valid和-invalid配合pattern校验表单输入的内容"><a href="#使用伪类-valid和-invalid配合pattern校验表单输入的内容" class="headerlink" title="使用伪类:valid和:invalid配合pattern校验表单输入的内容"></a><input>使用伪类:valid和:invalid配合pattern校验表单输入的内容</h3><pre><code class="bash">&amp;:valid {
+            border-color: <span class="comment">#3c9;</span>
+            box-shadow: inset 5px 0 0<span class="comment">#3c9;</span>
+        }
+        &amp;:invalid {
+            border-color: <span class="comment">#f66;</span>
+            box-shadow: inset 5px 0 0 <span class="comment">#f66;</span>
+        }</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/26/css%E5%B0%8F%E7%9F%A5%E8%AF%86/" data-id="ck9gvul9o0000u8nt8d3tane9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/14/react/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">react</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/26/css%E5%B0%8F%E7%9F%A5%E8%AF%86/">css小知识</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/14/react/">react</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/24/typeorm/">typeorm mongodb</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/24/mongodb/">mongoDB数据库</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/23/Restful%E8%A7%84%E8%8C%83/">Restful规范</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 JinKuo<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">博客</a>
+  
+</nav>
+<canvas
+width="150"
+height="300"
+id="model"></canvas>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/live2d.js"></script>
+
+
+
+<script>
+  
+let dir = `/live2d-widget-model-tororo/assets/tororo.model.json`
+const url = 'https://cdn.jsdelivr.net/gh/QiShaoXuan/live2DModel@1.0.0' + dir
+loadlive2d("model", url);
+</script>
+
+  </div>
+</body>
+</html>

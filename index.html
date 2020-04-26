@@ -63,6 +63,68 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-css小知识" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/26/css%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="article-date">
+  <time datetime="2020-04-26T09:14:54.828Z" itemprop="datePublished">2020-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/26/css%E5%B0%8F%E7%9F%A5%E8%AF%86/">css小知识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="快速重置表单元素-unset"><a href="#快速重置表单元素-unset" class="headerlink" title="快速重置表单元素 unset"></a>快速重置表单元素 unset</h3><pre><code class="bash">button { all: <span class="built_in">unset</span>; }</code></pre>
+<h3 id="文本省略号显示"><a href="#文本省略号显示" class="headerlink" title="文本省略号显示"></a>文本省略号显示</h3><pre><code class="bash">    div {  
+  white-space:nowrap;/* 规定文本是否折行 */  
+  overflow: hidden;/* 规定超出内容宽度的元素隐藏 */
+  text-overflow: ellipsis;
+  /* 规定超出的内容文本省略号显示，通常跟上面的属性连用，因为没有上面的属性不会触发超出规定的内容 */
+}复制代码折行(能主动控制行数,这里设置的超出 4 行显示省略号)：div {      
+  overflow: hidden;      
+  text-overflow: ellipsis;      
+  display: -webkit-box; /* 将对象作为弹性伸缩盒子模型显示 */      
+  -webkit-line-clamp: 4; /* 控制最多显示几行 */      
+  -webkit-box-orient: vertical; /* 设置或检索伸缩盒对象的子元素的排列方式 */    
+}</code></pre>
+<h3 id="最后一个-div-不显示下边框"><a href="#最后一个-div-不显示下边框" class="headerlink" title="最后一个 div 不显示下边框"></a>最后一个 div 不显示下边框</h3><pre><code class="bash">div:not(:last-child) /* 匹配非最后一个 div 元素的 div 元素 */</code></pre>
+<h3 id="设置文本俩端对齐"><a href="#设置文本俩端对齐" class="headerlink" title="设置文本俩端对齐"></a>设置文本俩端对齐</h3><pre><code class="bash">text-align-last:justify;</code></pre>
+<h3 id="通过pointer-events-none-阻止默认事件"><a href="#通过pointer-events-none-阻止默认事件" class="headerlink" title="通过pointer-events: none;阻止默认事件"></a>通过pointer-events: none;阻止默认事件</h3><pre><code class="bash">pointer-events: none;</code></pre>
+<h3 id="在标签上自定义属性data-，通过attr-获取其内容赋值到content上"><a href="#在标签上自定义属性data-，通过attr-获取其内容赋值到content上" class="headerlink" title="在标签上自定义属性data-*，通过attr()获取其内容赋值到content上"></a>在标签上自定义属性data-*，通过attr()获取其内容赋值到content上</h3><pre><code class="bash"> &lt;a class=<span class="string">"tips"</span> href=<span class="string">"https://www.baidu.com"</span> data-msg=<span class="string">"Hello World"</span>&gt;提示框&lt;/a&gt;
+content: attr(data-msg);</code></pre>
+<h3 id="使用伪类-valid和-invalid配合pattern校验表单输入的内容"><a href="#使用伪类-valid和-invalid配合pattern校验表单输入的内容" class="headerlink" title="使用伪类:valid和:invalid配合pattern校验表单输入的内容"></a><input>使用伪类:valid和:invalid配合pattern校验表单输入的内容</h3><pre><code class="bash">&amp;:valid {
+            border-color: <span class="comment">#3c9;</span>
+            box-shadow: inset 5px 0 0<span class="comment">#3c9;</span>
+        }
+        &amp;:invalid {
+            border-color: <span class="comment">#f66;</span>
+            box-shadow: inset 5px 0 0 <span class="comment">#f66;</span>
+        }</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/26/css%E5%B0%8F%E7%9F%A5%E8%AF%86/" data-id="ck9gvul9o0000u8nt8d3tane9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-react" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/14/react/" class="article-date">
@@ -152,7 +214,7 @@ findDOMNode() 不能用在无状态组件上。</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/14/react/" data-id="ck9gqxi9j0003bwntdhmv30vm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/14/react/" data-id="ck9gvulbl0004u8ntcemb8r1x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -199,7 +261,7 @@ findDOMNode() 不能用在无状态组件上。</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/24/typeorm/" data-id="ck9gqxi9g0002bwntfijacz8s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/24/typeorm/" data-id="ck9gvulah0003u8ntgogaedey" class="article-share-link">Share</a>
       
       
     </footer>
@@ -305,7 +367,7 @@ db.col.deleteOne({})删除第一个文档</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/24/mongodb/" data-id="ck9gqxi9a0001bwnt6bzw7rcn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/24/mongodb/" data-id="ck9gvulaf0002u8nt6cl96qwe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -344,7 +406,7 @@ db.col.deleteOne({})删除第一个文档</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/Restful%E8%A7%84%E8%8C%83/" data-id="ck9gqxi7q0000bwnt3dwn1wk2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/23/Restful%E8%A7%84%E8%8C%83/" data-id="ck9gvulaa0001u8nt9ccabgwb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -383,6 +445,10 @@ db.col.deleteOne({})删除第一个文档</code></pre>
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/04/26/css%E5%B0%8F%E7%9F%A5%E8%AF%86/">css小知识</a>
+          </li>
         
           <li>
             <a href="/2020/04/14/react/">react</a>
