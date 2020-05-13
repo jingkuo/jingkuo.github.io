@@ -63,6 +63,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-vue新增知识点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/13/vue%E6%96%B0%E5%A2%9E%E7%9F%A5%E8%AF%86%E7%82%B9/" class="article-date">
+  <time datetime="2020-05-13T03:38:03.355Z" itemprop="datePublished">2020-05-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/13/vue%E6%96%B0%E5%A2%9E%E7%9F%A5%E8%AF%86%E7%82%B9/">vue知识点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="自定义组件的-v-model"><a href="#自定义组件的-v-model" class="headerlink" title="自定义组件的 v-model"></a>自定义组件的 v-model</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">   一个组件上的 v-model 默认会利用名为 value 的 prop 和名为 input 的事件，但是像单选框、复选框等类型的输入控件可能会将 value attribute 用于不同的目的。model 选项可以用来避免这样的冲突：</span><br><span class="line"></span><br><span class="line">Vue.component(<span class="string">'base-checkbox'</span>, &#123;</span><br><span class="line">  model: &#123;</span><br><span class="line">    prop: <span class="string">'checked'</span>,</span><br><span class="line">    event: <span class="string">'change'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    checked: Boolean</span><br><span class="line">  &#125;,</span><br><span class="line">  template: `</span><br><span class="line">    &lt;input</span><br><span class="line">      <span class="built_in">type</span>=<span class="string">"checkbox"</span></span><br><span class="line">      v-bind:checked=<span class="string">"checked"</span></span><br><span class="line">      v-on:change=<span class="string">"<span class="variable">$emit</span>('change', <span class="variable">$event</span>.target.checked)"</span></span><br><span class="line">    &gt;</span><br><span class="line">  `</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">有了这个 <span class="variable">$listeners</span> property，你就可以配合 v-on=<span class="string">"<span class="variable">$listeners</span>"</span> 将所有的事件监听器指向这个组件的某个特定的子元素。对于类似 &lt;input&gt; 的你希望它也可以配合 v-model 工作的组件来说，为这些监听器创建一个类似下述 inputListeners 的计算属性通常是非常有用的：</span><br><span class="line"></span><br><span class="line">Vue.component(<span class="string">'base-input'</span>, &#123;</span><br><span class="line">  inheritAttrs: <span class="literal">false</span>,</span><br><span class="line">  props: [<span class="string">'label'</span>, <span class="string">'value'</span>],</span><br><span class="line">  computed: &#123;</span><br><span class="line">    inputListeners: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      var vm = this</span><br><span class="line">      // `Object.assign` 将所有的对象合并为一个新对象</span><br><span class="line">      <span class="built_in">return</span> Object.assign(&#123;&#125;,</span><br><span class="line">        // 我们从父级添加所有的监听器</span><br><span class="line">        this.<span class="variable">$listeners</span>,</span><br><span class="line">        // 然后我们添加自定义监听器，</span><br><span class="line">        // 或覆写一些监听器的行为</span><br><span class="line">        &#123;</span><br><span class="line">          // 这里确保组件配合 `v-model` 的工作</span><br><span class="line">          input: <span class="keyword">function</span> (event) &#123;</span><br><span class="line">            vm.<span class="variable">$emit</span>(<span class="string">'input'</span>, event.target.value)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  template: `</span><br><span class="line">    &lt;label&gt;</span><br><span class="line">      &#123;&#123; label &#125;&#125;</span><br><span class="line">      &lt;input</span><br><span class="line">        v-bind=<span class="string">"<span class="variable">$attrs</span>"</span></span><br><span class="line">        v-bind:value=<span class="string">"value"</span></span><br><span class="line">        v-on=<span class="string">"inputListeners"</span></span><br><span class="line">      &gt;</span><br><span class="line">    &lt;/label&gt;</span><br><span class="line">  `</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="slot"><a href="#slot" class="headerlink" title="slot"></a>slot</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;base-layout&gt;</span><br><span class="line">  &lt;template v-slot:header&gt;</span><br><span class="line">    &lt;h1&gt;Here might be a page title&lt;/h1&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line"></span><br><span class="line">  &lt;template v-slot:default&gt;</span><br><span class="line">    &lt;p&gt;A paragraph <span class="keyword">for</span> the main content.&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;And another one.&lt;/p&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line"></span><br><span class="line">  &lt;template v-slot:footer&gt;</span><br><span class="line">    &lt;p&gt;some contact info&lt;/p&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/base-layout&gt;</span><br><span class="line">v-slot 只能添加在 &lt;template&gt; 上 (只有一种例外情况)，这一点和已经废弃的 slot</span><br></pre></td></tr></table></figure>
+
+<h1 id="作用域插槽"><a href="#作用域插槽" class="headerlink" title="作用域插槽"></a>作用域插槽</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">为了让 user 在父级的插槽内容中可用，我们可以将 user 作为 &lt;slot&gt; 元素的一个 attribute 绑定上去：</span><br><span class="line"></span><br><span class="line">&lt;span&gt;</span><br><span class="line">  &lt;slot v-bind:user=<span class="string">"user"</span>&gt;</span><br><span class="line">    &#123;&#123; user.lastName &#125;&#125;</span><br><span class="line">  &lt;/slot&gt;</span><br><span class="line">&lt;/span&gt;</span><br><span class="line">绑定在 &lt;slot&gt; 元素上的 attribute 被称为插槽 prop。现在在父级作用域中，我们可以使用带值的 v-slot 来定义我们提供的插槽 prop 的名字：</span><br><span class="line"></span><br><span class="line">&lt;current-user&gt;</span><br><span class="line">  &lt;template v-slot:default=<span class="string">"slotProps"</span>&gt;</span><br><span class="line">    &#123;&#123; slotProps.user.firstName &#125;&#125;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/current-user&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="作用域插槽简写"><a href="#作用域插槽简写" class="headerlink" title="作用域插槽简写"></a>作用域插槽简写</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">在上述情况下，当被提供的内容只有默认插槽时，组件的标签才可以被当作插槽的模板来使用。这样我们就可以把 v-slot 直接用在组件上：</span><br><span class="line"></span><br><span class="line">&lt;current-user v-slot:default=<span class="string">"slotProps"</span>&gt;</span><br><span class="line">  &#123;&#123; slotProps.user.firstName &#125;&#125;</span><br><span class="line">&lt;/current-user&gt;</span><br><span class="line">这种写法还可以更简单。就像假定未指明的内容对应默认插槽一样，不带参数的 v-slot 被假定对应默认插槽：</span><br><span class="line"></span><br><span class="line">&lt;current-user v-slot=<span class="string">"slotProps"</span>&gt;</span><br><span class="line">  &#123;&#123; slotProps.user.firstName &#125;&#125;</span><br><span class="line">&lt;/current-user&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="动态插槽名"><a href="#动态插槽名" class="headerlink" title="动态插槽名"></a>动态插槽名</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">2.6.0 新增</span><br><span class="line"></span><br><span class="line">动态指令参数也可以用在 v-slot 上，来定义动态的插槽名：</span><br><span class="line"></span><br><span class="line">&lt;base-layout&gt;</span><br><span class="line">  &lt;template v-slot:[dynamicSlotName]&gt;</span><br><span class="line">    ...</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/base-layout&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="具名插槽的缩写"><a href="#具名插槽的缩写" class="headerlink" title="具名插槽的缩写"></a>具名插槽的缩写</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    跟 v-on 和 v-bind 一样，v-slot 也有缩写，即把参数之前的所有内容 (v-slot:) 替换为字符 <span class="comment">#。例如 v-slot:header 可以被重写为 #header：</span></span><br><span class="line"></span><br><span class="line">&lt;base-layout&gt;</span><br><span class="line">  &lt;template <span class="comment">#header&gt;</span></span><br><span class="line">    &lt;h1&gt;Here might be a page title&lt;/h1&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line"></span><br><span class="line">  &lt;p&gt;A paragraph <span class="keyword">for</span> the main content.&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;And another one.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">  &lt;template <span class="comment">#footer&gt;</span></span><br><span class="line">    &lt;p&gt;Here some contact info&lt;/p&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/base-layout&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/13/vue%E6%96%B0%E5%A2%9E%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="cka4xrsm70002l8ntfuqncwt7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-vue-cli4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/11/vue-cli4/" class="article-date">
@@ -101,7 +145,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/11/vue-cli4/" data-id="cka37k5di0004vonths7z3ywh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/11/vue-cli4/" data-id="cka4xrsm80003l8nt61vr63qr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -163,7 +207,7 @@ content: attr(data-msg);</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/26/css%E5%B0%8F%E7%9F%A5%E8%AF%86/" data-id="cka37k5cv0001vont11sk2mmu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/26/css%E5%B0%8F%E7%9F%A5%E8%AF%86/" data-id="cka4xrsmb0006l8nth2cah9v9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -262,7 +306,7 @@ findDOMNode() 不能用在无状态组件上。</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/14/react/" data-id="cka37k5dg0003vontd55s25aw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/14/react/" data-id="cka4xrsm90004l8nt3jce0ad0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -309,7 +353,7 @@ findDOMNode() 不能用在无状态组件上。</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/24/typeorm/" data-id="cka37k5dk0005vont2zupbvl2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/24/typeorm/" data-id="cka4xrsma0005l8nt01li5nmm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -415,7 +459,7 @@ db.col.deleteOne({})删除第一个文档</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/24/mongodb/" data-id="cka37k5df0002vont1josdmh5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/24/mongodb/" data-id="cka4xrslp0000l8ntcnqvgb1m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -454,7 +498,7 @@ db.col.deleteOne({})删除第一个文档</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/Restful%E8%A7%84%E8%8C%83/" data-id="cka37k5ca0000vont05ib0zzp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/23/Restful%E8%A7%84%E8%8C%83/" data-id="cka4xrsm40001l8nteix47rmz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -495,6 +539,10 @@ db.col.deleteOne({})删除第一个文档</code></pre>
       <ul>
         
           <li>
+            <a href="/2020/05/13/vue%E6%96%B0%E5%A2%9E%E7%9F%A5%E8%AF%86%E7%82%B9/">vue知识点</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/11/vue-cli4/">vue-cli4</a>
           </li>
         
@@ -508,10 +556,6 @@ db.col.deleteOne({})删除第一个文档</code></pre>
         
           <li>
             <a href="/2020/03/24/typeorm/">typeorm mongodb</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/24/mongodb/">mongoDB数据库</a>
           </li>
         
       </ul>
