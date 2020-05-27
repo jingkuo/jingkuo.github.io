@@ -63,6 +63,43 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-移动端不同像素比1px边框解决方案" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/13/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%B8%8D%E5%90%8C%E5%83%8F%E7%B4%A0%E6%AF%941px%E8%BE%B9%E6%A1%86%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="article-date">
+  <time datetime="2020-05-13T06:09:37.955Z" itemprop="datePublished">2020-05-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/13/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%B8%8D%E5%90%8C%E5%83%8F%E7%B4%A0%E6%AF%941px%E8%BE%B9%E6%A1%86%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">移动端不同像素比1px边框解决方案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="通过伪类解决"><a href="#通过伪类解决" class="headerlink" title="通过伪类解决"></a>通过伪类解决</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line">/*手机端实现真正的一像素边框*/</span><br><span class="line">.border-1px, .border-bottom-1px, .border-top-1px, .border-left-1px, .border-right-1px &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*线条颜色 黑色*/</span><br><span class="line">.border-1px::after, .border-bottom-1px::after, .border-top-1px::after, .border-left-1px::after, .border-right-1px::after &#123;</span><br><span class="line">    background-color: <span class="comment">#000;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*底边边框一像素*/</span><br><span class="line">.border-bottom-1px::after &#123;</span><br><span class="line">    content: <span class="string">""</span>;</span><br><span class="line">    position: absolute;</span><br><span class="line">    left: 0;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 1px;</span><br><span class="line">    transform-origin: 0 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*上边边框一像素*/</span><br><span class="line">.border-top-1px::after &#123;</span><br><span class="line">    content: <span class="string">""</span>;</span><br><span class="line">    position: absolute;</span><br><span class="line">    left: 0;</span><br><span class="line">    top: 0;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 1px;</span><br><span class="line">    transform-origin: 0 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*左边边框一像素*/</span><br><span class="line">.border-left-1px::after &#123;</span><br><span class="line">    content: <span class="string">""</span>;</span><br><span class="line">    position: absolute;</span><br><span class="line">    left: 0;</span><br><span class="line">    top: 0;</span><br><span class="line">    width: 1px;</span><br><span class="line">    height: 100%;</span><br><span class="line">    transform-origin: 0 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*右边边框1像素*/</span><br><span class="line">.border-right-1px::after &#123;</span><br><span class="line">    content: <span class="string">""</span>;</span><br><span class="line">    box-sizing: border-box;</span><br><span class="line">    position: absolute;</span><br><span class="line">    right: 0;</span><br><span class="line">    top: 0;</span><br><span class="line">    width: 1px;</span><br><span class="line">    height: 100%;</span><br><span class="line">    transform-origin: 0 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*边框一像素*/</span><br><span class="line">.border-1px::after &#123;</span><br><span class="line">    content: <span class="string">""</span>;</span><br><span class="line">    box-sizing: border-box;</span><br><span class="line">    position: absolute;</span><br><span class="line">    left: 0;</span><br><span class="line">    top: 0;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100%;</span><br><span class="line">    border: 1px solid gray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/*设备像素比*/</span><br><span class="line">/*显示屏最小dpr为2*/</span><br><span class="line">@media (-webkit-min-device-pixel-ratio: 2) &#123;</span><br><span class="line">    .border-bottom-1px::after, .border-top-1px::after &#123;</span><br><span class="line">        transform: scaleY(0.5);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .border-left-1px::after, .border-right-1px::after &#123;</span><br><span class="line">        transform: scaleX(0.5);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .border-1px::after &#123;</span><br><span class="line">        width: 200%;</span><br><span class="line">        height: 200%;</span><br><span class="line">        transform: scale(0.5);</span><br><span class="line">        transform-origin: 0 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*设备像素比*/</span><br><span class="line">@media (-webkit-min-device-pixel-ratio: 3)  &#123;</span><br><span class="line">    .border-bottom-1px::after, .border-top-1px::after &#123;</span><br><span class="line">        transform: scaleY(0.333);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .border-left-1px::after, .border-right-1px::after &#123;</span><br><span class="line">        transform: scaleX(0.333);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .border-1px::after &#123;</span><br><span class="line">        width: 300%;</span><br><span class="line">        height: 300%;</span><br><span class="line">        transform: scale(0.333);</span><br><span class="line">        transform-origin: 0 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">/*需要注意&lt;input <span class="built_in">type</span>=<span class="string">"button"</span>&gt;是没有:before, :after伪元素的*/</span><br></pre></td></tr></table></figure>
+<h1 id="viewport-rem"><a href="#viewport-rem" class="headerlink" title="viewport + rem"></a>viewport + rem</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">    同时通过设置对应viewport的rem基准值，这种方式就可以像以前一样轻松愉快的写1px了。</span><br><span class="line">在devicePixelRatio = 2 时，设置meta：</span><br><span class="line"></span><br><span class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width,initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no"</span>&gt;</span><br><span class="line">在devicePixelRatio = 3 时，设置meta：</span><br><span class="line"></span><br><span class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width,initial-scale=0.3333333333333333, maximum-scale=0.3333333333333333, minimum-scale=0.3333333333333333, user-scalable=no"</span>&gt;</span><br><span class="line">实例验证：</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;移动端1px问题&lt;/title&gt;</span><br><span class="line">    &lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html;charset=UTF-8"</span> /&gt;</span><br><span class="line">    &lt;meta name=<span class="string">"viewport"</span> id=<span class="string">"WebViewport"</span></span><br><span class="line">        content=<span class="string">"width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"</span> /&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        html &#123;</span><br><span class="line">            font-size: 11px;</span><br><span class="line">        &#125;</span><br><span class="line">        body &#123;</span><br><span class="line">            padding: 1rem;</span><br><span class="line">        &#125;</span><br><span class="line">        * &#123;</span><br><span class="line">            padding: 0;</span><br><span class="line">            margin: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        .item &#123;</span><br><span class="line">            padding: 1rem;</span><br><span class="line">            border-bottom: 1px solid gray;</span><br><span class="line">            font-size: 1.2rem;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var viewport = document.querySelector(<span class="string">"meta[name=viewport]"</span>);</span><br><span class="line">        var dpr = window.devicePixelRatio || 1;</span><br><span class="line">        var scale = 1 / dpr;</span><br><span class="line">        //下面是根据设备dpr设置viewport</span><br><span class="line">        viewport.setAttribute(</span><br><span class="line">            <span class="string">"content"</span>, +</span><br><span class="line">            <span class="string">"width=device-width,"</span> +</span><br><span class="line">            <span class="string">"initial-scale="</span> +</span><br><span class="line">            scale +</span><br><span class="line">            <span class="string">", maximum-scale="</span> +</span><br><span class="line">            scale +</span><br><span class="line">            <span class="string">", minimum-scale="</span> +</span><br><span class="line">            scale +</span><br><span class="line">            <span class="string">", user-scalable=no"</span></span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        var docEl = document.documentElement;</span><br><span class="line">        var fontsize = 10 * (docEl.clientWidth / 320) + <span class="string">"px"</span>;</span><br><span class="line">        docEl.style.fontSize = fontsize;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=<span class="string">"item"</span>&gt;border-bottom: 1px solid gray;&lt;/div&gt;</span><br><span class="line">    &lt;div class=<span class="string">"item"</span>&gt;border-bottom: 1px solid gray;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/13/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%B8%8D%E5%90%8C%E5%83%8F%E7%B4%A0%E6%AF%941px%E8%BE%B9%E6%A1%86%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="ckap2px8d00077cnt246ta0ro" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-vue新增知识点" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/13/vue%E6%96%B0%E5%A2%9E%E7%9F%A5%E8%AF%86%E7%82%B9/" class="article-date">
@@ -94,10 +131,11 @@
 <h1 id="动态插槽名"><a href="#动态插槽名" class="headerlink" title="动态插槽名"></a>动态插槽名</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">2.6.0 新增</span><br><span class="line"></span><br><span class="line">动态指令参数也可以用在 v-slot 上，来定义动态的插槽名：</span><br><span class="line"></span><br><span class="line">&lt;base-layout&gt;</span><br><span class="line">  &lt;template v-slot:[dynamicSlotName]&gt;</span><br><span class="line">    ...</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/base-layout&gt;</span><br></pre></td></tr></table></figure>
 
 <h1 id="具名插槽的缩写"><a href="#具名插槽的缩写" class="headerlink" title="具名插槽的缩写"></a>具名插槽的缩写</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    跟 v-on 和 v-bind 一样，v-slot 也有缩写，即把参数之前的所有内容 (v-slot:) 替换为字符 <span class="comment">#。例如 v-slot:header 可以被重写为 #header：</span></span><br><span class="line"></span><br><span class="line">&lt;base-layout&gt;</span><br><span class="line">  &lt;template <span class="comment">#header&gt;</span></span><br><span class="line">    &lt;h1&gt;Here might be a page title&lt;/h1&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line"></span><br><span class="line">  &lt;p&gt;A paragraph <span class="keyword">for</span> the main content.&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;And another one.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">  &lt;template <span class="comment">#footer&gt;</span></span><br><span class="line">    &lt;p&gt;Here some contact info&lt;/p&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/base-layout&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="异步加载"><a href="#异步加载" class="headerlink" title="异步加载"></a>异步加载</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">    不止在路由中可以异步加载，在组件中也可以异步加载，大大提升性能</span><br><span class="line">    异步组件</span><br><span class="line">    Vue.component(<span class="string">'async-webpack-example'</span>, <span class="keyword">function</span> (resolve) &#123;</span><br><span class="line">  // 这个特殊的 `require` 语法将会告诉 webpack</span><br><span class="line">  // 自动将你的构建代码切割成多个包，这些包</span><br><span class="line">  // 会通过 Ajax 请求加载</span><br><span class="line">  require([<span class="string">'./my-async-component'</span>], resolve)</span><br><span class="line">&#125;)</span><br><span class="line">你也可以在工厂函数中返回一个 Promise，所以把 webpack 2 和 ES2015 语法加在一起，我们可以写成这样：</span><br><span class="line">Vue.component(</span><br><span class="line">  <span class="string">'async-webpack-example'</span>,</span><br><span class="line">  // 这个 `import` 函数会返回一个 `Promise` 对象。</span><br><span class="line">  () =&gt; import(<span class="string">'./my-async-component'</span>)</span><br><span class="line">)</span><br><span class="line">new Vue(&#123;</span><br><span class="line">  // ...</span><br><span class="line">  components: &#123;</span><br><span class="line">    <span class="string">'my-component'</span>: () =&gt; import(<span class="string">'./my-async-component'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2.3.0+ 新增</span><br><span class="line"></span><br><span class="line">这里的异步组件工厂函数也可以返回一个如下格式的对象：</span><br><span class="line"></span><br><span class="line">const AsyncComponent = () =&gt; (&#123;</span><br><span class="line">  // 需要加载的组件 (应该是一个 `Promise` 对象)</span><br><span class="line">  component: import(<span class="string">'./MyComponent.vue'</span>),</span><br><span class="line">  // 异步组件加载时使用的组件</span><br><span class="line">  loading: LoadingComponent,</span><br><span class="line">  // 加载失败时使用的组件</span><br><span class="line">  error: ErrorComponent,</span><br><span class="line">  // 展示加载时组件的延时时间。默认值是 200 (毫秒)</span><br><span class="line">  delay: 200,</span><br><span class="line">  // 如果提供了超时时间且组件加载也超时了，</span><br><span class="line">  // 则使用加载失败时使用的组件。默认值是：`Infinity`</span><br><span class="line">  timeout: 3000</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/13/vue%E6%96%B0%E5%A2%9E%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="cka4xrsm70002l8ntfuqncwt7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/13/vue%E6%96%B0%E5%A2%9E%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="ckap2px8c00067cnteq1ehjhr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -145,7 +183,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/11/vue-cli4/" data-id="cka4xrsm80003l8nt61vr63qr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/11/vue-cli4/" data-id="ckap2px8a00057cntcbob9hzm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -207,7 +245,7 @@ content: attr(data-msg);</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/26/css%E5%B0%8F%E7%9F%A5%E8%AF%86/" data-id="cka4xrsmb0006l8nth2cah9v9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/26/css%E5%B0%8F%E7%9F%A5%E8%AF%86/" data-id="ckap2px8300017cnt8cpwc1sx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -306,7 +344,7 @@ findDOMNode() 不能用在无状态组件上。</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/14/react/" data-id="cka4xrsm90004l8nt3jce0ad0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/14/react/" data-id="ckap2px8800037cnt1r91ariy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -353,7 +391,7 @@ findDOMNode() 不能用在无状态组件上。</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/24/typeorm/" data-id="cka4xrsma0005l8nt01li5nmm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/24/typeorm/" data-id="ckap2px8900047cnt4k612fh5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -459,7 +497,7 @@ db.col.deleteOne({})删除第一个文档</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/24/mongodb/" data-id="cka4xrslp0000l8ntcnqvgb1m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/24/mongodb/" data-id="ckap2px8600027cnt3jf8d40s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -498,7 +536,7 @@ db.col.deleteOne({})删除第一个文档</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/Restful%E8%A7%84%E8%8C%83/" data-id="cka4xrsm40001l8nteix47rmz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/23/Restful%E8%A7%84%E8%8C%83/" data-id="ckap2px7m00007cnt0jky2ntd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -539,6 +577,10 @@ db.col.deleteOne({})删除第一个文档</code></pre>
       <ul>
         
           <li>
+            <a href="/2020/05/13/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%B8%8D%E5%90%8C%E5%83%8F%E7%B4%A0%E6%AF%941px%E8%BE%B9%E6%A1%86%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">移动端不同像素比1px边框解决方案</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/13/vue%E6%96%B0%E5%A2%9E%E7%9F%A5%E8%AF%86%E7%82%B9/">vue知识点</a>
           </li>
         
@@ -552,10 +594,6 @@ db.col.deleteOne({})删除第一个文档</code></pre>
         
           <li>
             <a href="/2020/04/14/react/">react</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/24/typeorm/">typeorm mongodb</a>
           </li>
         
       </ul>
@@ -609,7 +647,7 @@ id="model"></canvas>
 
 <script>
   
-let dir = `/live2d-widget-model-tororo/assets/tororo.model.json`
+let dir = `/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json`
 const url = 'https://cdn.jsdelivr.net/gh/QiShaoXuan/live2DModel@1.0.0' + dir
 loadlive2d("model", url);
 </script>
